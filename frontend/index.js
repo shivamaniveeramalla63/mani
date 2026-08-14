@@ -38,3 +38,20 @@ function randomuser(){
         console.log("something error occured"+err);
     });
 }
+const btn2=document.getElementById("btn2");
+btn2.addEventListener("click",myrandomuser);
+function myrandomuser(){
+    fetch("/api/random-user")
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(data){
+        document.querySelector("img").src=data.image;
+        document.querySelector("h2").textContent=data.name;
+        document.querySelector("p").textContent=data.gender;
+
+    })
+    .catch(function(err){
+        console.log("something error occured"+err);
+    });
+}
